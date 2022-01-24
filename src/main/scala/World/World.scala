@@ -9,7 +9,7 @@ object World {
 
   def remove(pos:(Int, Int)) = underlying.remove(pos);
 
-  def uppdate(pos:(Int,Int), value:WorldObject) = underlying.update(pos, WorldObject);
+  def uppdate(pos:(Int,Int), value:WorldObject) = underlying.update(pos,deafult(pos));
 
   def set(pos:(Int,Int), value:WorldObject) = underlying.put(pos, value);
 

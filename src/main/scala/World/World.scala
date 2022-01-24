@@ -3,7 +3,7 @@ import WorldObject.WorldObject
 import scala.collection.mutable.Map
 object World {
   val underlying = Map.empty[(Int, Int), WorldObject];
-  def deafult(pos:(Int, Int)) = WorldObject.creatEmpty(pos);
+  private def deafult(pos:(Int, Int)) = WorldObject.creatEmpty(pos);
   
   def get(pos:(Int, Int)) = underlying.getOrElse(pos, deafult(pos));
 

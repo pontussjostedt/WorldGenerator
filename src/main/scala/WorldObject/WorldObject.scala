@@ -1,6 +1,6 @@
 package WorldObject
 
-abstract class WorldObject(var pos:(Int, Int)) {
+trait WorldObject(var pos:(Int, Int)) {
   
 }
 

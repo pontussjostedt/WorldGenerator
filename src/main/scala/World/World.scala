@@ -3,7 +3,7 @@ import WorldObject.WorldObject
 import scala.collection.mutable.Map
 object World {
   val underlying = Map.empty[(Int, Int), WorldObject];
-  private def deafult(pos:(Int, Int)) = WorldObject.creatEmpty(pos);
+  private def deafult(pos:(Int, Int) = (0,0)) = WorldObject.creatEmpty(pos);
   
   def get(pos:(Int, Int)):WorldObject = underlying.getOrElse(pos, deafult(pos));
 
@@ -21,6 +21,17 @@ object World {
     remove(oldPos);
     set(newPos, value)
     value.pos = newPos
-    
+  }
+
+  /**Moves to the pos if and only if the newPos is empty
+   * 
+   * Retruns true if move was made otherwise false
+   * Empty is defind as containing the deafult tile
+  */
+  def moveIfAble(oldPos:(Int, Int), newPos:(Int,Int)):Boolean = {
+    val canMove:Boolean = get(newPos).getClass() == deafult().getClass()
+    if canMove then move(oldPos,newPos)
+    canMove;
+
   }
 }

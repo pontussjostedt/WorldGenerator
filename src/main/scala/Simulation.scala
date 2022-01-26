@@ -6,6 +6,9 @@ class Simulation {
   val camera: gfx.Camera = new gfx.Camera
   val running: Boolean = true;
 
+
+  World.init()
+
   while(running) {
       tick()
       window.render(draw(_))

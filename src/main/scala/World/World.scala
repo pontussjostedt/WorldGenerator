@@ -3,6 +3,7 @@ import WorldObject.WorldObject
 import java.awt.Graphics2D
 import gfx.Camera
 import scala.collection.mutable.Map
+import _root_.WorldObject.Structures.Townhall
 object World {
   val underlying = Map.empty[(Int, Int), WorldObject];
   private def default(pos:(Int, Int) = (0,0)) = WorldObject.creatEmpty(pos);
@@ -13,7 +14,7 @@ object World {
 
   def update(pos:(Int,Int), value:WorldObject) = underlying.update(pos, default(pos));
 
-  def set(pos:(Int,Int), value:WorldObject) = underlying.put(pos, value);
+  def set(pos:(Int,Int), value:WorldObject): Unit = underlying.put(pos, value);
 
   def apply(pos:(Int, Int)) = get(pos);
 
@@ -35,12 +36,17 @@ object World {
     if canMove then move(oldPos,newPos)
     canMove;
   }
+  def init(): Unit = {
+    set((4,5), new Townhall(4,5))
+  }
 
   def tick(): Unit = {
 
   }
 
   def draw(g2d: Graphics2D, camera: Camera): Unit = {
-    
+    underlying.foreach {case(pos, wo) =>
+      wo.draw(g2d, camera)
+    }
   }
 }

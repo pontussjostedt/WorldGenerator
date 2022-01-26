@@ -1,5 +1,7 @@
 object Main {
-    def main(args: Array[String]) = {
-        println("Hello, world")
+
+    @main
+    def run() = {
+        new Simulation()
     }
 }

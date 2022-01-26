@@ -3,13 +3,13 @@ import WorldObject.WorldObject
 import scala.collection.mutable.Map
 object World {
   val underlying = Map.empty[(Int, Int), WorldObject];
-  private def deafult(pos:(Int, Int) = (0,0)) = WorldObject.creatEmpty(pos);
+  private def default(pos:(Int, Int) = (0,0)) = WorldObject.creatEmpty(pos);
   
-  def get(pos:(Int, Int)):WorldObject = underlying.getOrElse(pos, deafult(pos));
+  def get(pos:(Int, Int)): WorldObject = underlying.getOrElse(pos, default(pos));
 
   def remove(pos:(Int, Int)) = underlying.remove(pos);
 
-  def update(pos:(Int,Int), value:WorldObject) = underlying.update(pos, deafult(pos));
+  def update(pos:(Int,Int), value:WorldObject) = underlying.update(pos, default(pos));
 
   def set(pos:(Int,Int), value:WorldObject) = underlying.put(pos, value);
 
@@ -29,9 +29,8 @@ object World {
    * Empty is defind as containing the deafult tile
   */
   def moveIfAble(oldPos:(Int, Int), newPos:(Int,Int)):Boolean = {
-    val canMove:Boolean = get(newPos).getClass() == deafult().getClass()
+    val canMove: Boolean = get(newPos).getClass() == default().getClass()
     if canMove then move(oldPos,newPos)
     canMove;
-
   }
 }

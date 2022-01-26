@@ -1,5 +1,7 @@
 package World
 import WorldObject.WorldObject
+import java.awt.Graphics2D
+import gfx.Camera
 import scala.collection.mutable.Map
 object World {
   val underlying = Map.empty[(Int, Int), WorldObject];
@@ -32,5 +34,13 @@ object World {
     val canMove: Boolean = get(newPos).getClass() == default().getClass()
     if canMove then move(oldPos,newPos)
     canMove;
+  }
+
+  def tick(): Unit = {
+
+  }
+
+  def draw(g2d: Graphics2D, camera: Camera): Unit = {
+    
   }
 }

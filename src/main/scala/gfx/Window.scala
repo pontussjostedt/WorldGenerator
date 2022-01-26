@@ -58,6 +58,10 @@ class KeyManager() extends KeyListener {
     isKeyPressed(table(input))
   }
 
+  def apply(in: Int*): Boolean = {
+    in.forall(n => isKeyPressed(n))
+  }
+
 }
 
 class MouseManager() extends MouseListener, MouseMotionListener {

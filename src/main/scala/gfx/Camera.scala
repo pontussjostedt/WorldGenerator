@@ -1,0 +1,5 @@
+package gfx
+
+class Camera {
+  
+}
